@@ -1,4 +1,4 @@
-#include "WinState.h"
+#include "GameState.h"
 
 WinState::WinState() {
 	string text = "Go to Menu";

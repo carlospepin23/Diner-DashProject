@@ -6,8 +6,8 @@ void ofApp::setup(){
 	introState = new IntroState();	
 	menuState = new MenuState();
 	gameState = new GameState();
-	winState = new WinState();	
-	loseState = new WinState();
+	winState = new WinState();
+	loseState = new LoseState();
 	// Initial State
 	currentState = introState;
 

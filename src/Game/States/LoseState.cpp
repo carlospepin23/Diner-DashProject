@@ -1,4 +1,4 @@
-#include "LoseState.h"
+#include "GameState.h"
 
 LoseState::LoseState() {
 	string text = "Go to Menu";
