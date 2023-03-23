@@ -5,6 +5,9 @@
 
 class EntityManager {
 
+private:
+int clientsMad=0;
+
 public:
 	Client* firstClient;
 	void tick();
@@ -13,5 +16,5 @@ public:
 	void addClient(Client *c);
 	void removeLeavingClients();
 	std::vector<Entity*> entities;
-
+	int getClientsMad();
 };

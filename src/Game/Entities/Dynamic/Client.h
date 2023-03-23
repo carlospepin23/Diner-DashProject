@@ -14,6 +14,7 @@ class Client: public Entity{
         int serve(Burger*);
         Client* nextClient=nullptr;
         bool isLeaving=false;
+        bool isMad=false;
 
 
 

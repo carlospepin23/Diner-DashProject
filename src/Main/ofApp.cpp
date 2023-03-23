@@ -3,10 +3,13 @@
 void ofApp::setup(){
 	ofSetWindowTitle("Java Game Box");
 	//States
+	introState = new IntroState();	
 	menuState = new MenuState();
 	gameState = new GameState();
+	winState = new WinState();	
+	loseState = new WinState();
 	// Initial State
-	currentState = menuState;
+	currentState = introState;
 
 	// Sound
 	sound.load("music.wav");
@@ -20,10 +23,20 @@ void ofApp::update(){
 	if (currentState != nullptr){
 		currentState->tick();
 		if(currentState->hasFinished()){
-			if(currentState->getNextState() == "Menu"){
+			if(currentState->getNextState() == "Intro"){
 				currentState = menuState;
+			}else if(currentState->getNextState() == "Menu"){
+				currentState = menuState;
+
 			}else if(currentState->getNextState() == "Game"){
 				currentState = gameState;
+
+			}else if(currentState->getNextState() == "Win"){
+				currentState = winState;
+				gameState = new GameState();
+			}else if(currentState->getNextState() == "Lose"){
+				currentState = loseState;
+				gameState = new GameState();
 			}
 			currentState->reset();
 		}
