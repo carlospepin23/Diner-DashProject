@@ -5,6 +5,15 @@ GameState::GameState() {
 }
 void GameState::tick() {
 	restaurant->tick();
+	if(restaurant->getEntityManager()->getClientsMad()==1){
+		setNextState("Lose");
+		setFinished(true);
+	
+	}
+	else if (restaurant->getMoney()==100){
+		setNextState("Win");
+		setFinished(true);
+	}
 }
 void GameState::render() {
 	restaurant->render();

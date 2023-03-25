@@ -129,3 +129,11 @@ void Restaurant::keyPressed(int key) {
         serveClient();
     }
 }
+
+EntityManager* Restaurant::getEntityManager(){
+    return entityManager;
+}
+
+int Restaurant::getMoney(){
+    return money;
+}

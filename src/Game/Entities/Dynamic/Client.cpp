@@ -19,7 +19,8 @@ void Client::tick(){
     patience--;
     burger->setY(y);
     if(patience == 0){
-        isLeaving = true;
+        isLeaving=true;
+        isMad = true;
     }
     if(nextClient != nullptr){
         nextClient->tick();

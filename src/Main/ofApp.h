@@ -1,15 +1,21 @@
 #pragma once
 
 #include "ofMain.h"
+#include "IntroState.h"
 #include "MenuState.h"
 #include "GameState.h"
+// #include "LoseState.h"
+// #include "WinState.h"
 
 class ofApp : public ofBaseApp{
 
 private:
 	State *currentState;
+	IntroState *introState;
 	MenuState *menuState;
 	GameState *gameState;
+	WinState *winState;
+	LoseState *loseState;
 	
 	ofSoundPlayer sound;
 
