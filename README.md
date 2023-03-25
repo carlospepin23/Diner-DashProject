@@ -14,6 +14,6 @@ This project has a lot of classes and OOP concepts in it, so make sure to study 
 # Student Info
 Please fill out the information below for each member of the team:
 
-### [ STUDENT A NAME : STUDENT A EMAIL ]
+### [ Jeremy Morales Acosta  : jeremy.morales1@upr.edu ]
 
-### [ STUDENT B NAME : STUDENT B EMAIL ]
+### [ Carlos J. Pepin Delgado : carlos.pepin1@upr.edu ]

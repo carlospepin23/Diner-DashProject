@@ -106,6 +106,17 @@ void Restaurant::render() {
     ofSetColor(0, 100, 0);
     ofDrawBitmapString("Money: " + to_string(money), ofGetWidth()/2, 10);
     ofSetColor(256, 256, 256);
+    ofImage plant1, plant2, plant3,Table_PNG;
+    plant1.load("images/plant1.jpg");
+    plant2.load("images/suculent_PNG.png");
+    plant3.load("images/Cactus_PNG.jpg");
+    Table_PNG.load("images/table_PNG.png"); 
+    Table_PNG.draw(500, 50, 100, 100);
+    plant1.draw(525,30, 50, 50);
+    Table_PNG.draw(500, 150, 100, 100);
+    plant2.draw(525,120, 50, 50);
+    Table_PNG.draw(500, 250, 100, 100);
+    plant3.draw(525,220, 50, 50);
 }
 void Restaurant::serveClient(){
     if(entityManager->firstClient!= nullptr){
