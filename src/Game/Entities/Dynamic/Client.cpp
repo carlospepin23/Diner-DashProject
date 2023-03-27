@@ -1,6 +1,6 @@
 #include "Client.h"
 
-Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burger): Entity(x, y, width, height, sprite){
+Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burger) : Entity(x, y, width, height, sprite){
     this->burger = burger;
 }
 Client::~Client(){
@@ -8,7 +8,18 @@ Client::~Client(){
 }
 void Client::render(){
     burger->render();
-    ofSetColor (255,255,255);
+    if((patience < 1500) && (patience > 1000))
+    {
+        ofSetColor(ofColor::lightPink);
+    }
+    else if( (patience < 1000) && (patience > 500))
+    {
+        ofSetColor(ofColor::red);
+    }
+    else if(patience < 500)
+    {
+        ofSetColor(ofColor::darkRed);
+    }
     sprite.draw(x, y, width, height);
     if(nextClient != nullptr){
         nextClient->render();
@@ -18,16 +29,27 @@ void Client::render(){
 void Client::tick(){
     patience--;
     burger->setY(y);
-    if(patience == 0){
-        isLeaving=true;
+    if(patience == 0)
+    {
         isMad = true;
+        isLeaving = true; 
     }
-    if(nextClient != nullptr){
+    if(nextClient != nullptr)
+    {
         nextClient->tick();
     }
 }
 
 int Client::serve(Burger* burger){
-    isLeaving = true;
-    return 10;
+    if(isMad == false)
+    {
+        isLeaving = true;
+        return 10;
+    }
+    else
+    {
+        isLeaving = true;
+        return 0; 
+    }
+   
 }
