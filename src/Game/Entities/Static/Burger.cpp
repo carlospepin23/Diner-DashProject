@@ -15,6 +15,10 @@ void Burger::addIngredient(Item *item) {
     ingredients.push_back(item);
 }
 
+void Burger::undoIngredient() {
+    ingredients.pop_back();
+}
+
 void Burger::render(){
     int counter = 1;
     for (Item* ingredient:ingredients){
@@ -25,4 +29,13 @@ void Burger::render(){
 
 void Burger::clear(){
     ingredients.empty();
+}
+
+bool Burger::hasIngredients(){
+    if(!ingredients.empty()){
+        return true;
+    }
+    else{
+        return false;
+    }
 }

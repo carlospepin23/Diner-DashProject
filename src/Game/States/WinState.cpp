@@ -2,7 +2,7 @@
 
 WinState::WinState() {
 	string text = "Go to Menu";
-	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*11, 64, 50, "Go to Menu");
+	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*11, 64, 50, text);
 }
 void WinState::tick() {
 	startButton->tick();
