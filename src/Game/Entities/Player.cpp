@@ -55,6 +55,12 @@ void Player::keyPressed(int key){
             }
         }
     }
+    if(key == 'u'){
+        if(burger->hasIngredients()){
+            burger->undoIngredient(); //FIX que also se pueda hacer undo mientras no esta frente a algun ingrediente.
+        }
+    }
+
 }
 BaseCounter* Player::getActiveCounter(){
     for(Entity* e:entityManager->entities){

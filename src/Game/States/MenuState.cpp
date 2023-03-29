@@ -2,7 +2,7 @@
 
 MenuState::MenuState() {
 	string text = "Start";
-	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*11, 64, 50, "Start");
+	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*11, 64, 50, text);
 
 	// string text2 = "Game Instructions";
 	// introButton = new Button(ofGetWidth()/2 - text2.length()*8, ofGetHeight()/2 - text2.length()*11, 64, 50, "Game Instructions");
