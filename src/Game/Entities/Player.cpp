@@ -96,4 +96,13 @@ void Player::setFacing(string facing){ this->facing = facing; }
 
 void Player::setPlayerStop(bool t){
     this->stop=t;
- }
+}
+
+void Player::discardBurger(){ //discards the already served burger
+    // this->burger = new Burger(ofGetWidth()-110, 100, 100, 50); //working method placed just in case the code needs to be refactored for other implementations.
+    this->burger->clear();
+}
+
+Burger* Player::getBurger(){
+    return burger;
+}

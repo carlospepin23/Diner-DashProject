@@ -29,7 +29,7 @@ void Burger::render(){
 }
 
 void Burger::clear(){
-    ingredients.empty();
+    ingredients.clear();  //empty function wasnt working so it was re-defined
 }
 
 bool Burger::hasIngredients(){

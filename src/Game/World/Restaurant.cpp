@@ -126,9 +126,14 @@ void Restaurant::serveClient(){
 }
 void Restaurant::keyPressed(int key) {
     player->keyPressed(key);
-    if(key == 's'){
+    if(key == 's' && player->getBurger()->hasIngredients()){ 
         serveClient();
+        player->discardBurger();
     }
+    if(key == 'e'){
+        money-=1; //Aplica el costo de los ingredientes al total
+    }
+
 }
 
 void Restaurant::keyReleased(int key) {

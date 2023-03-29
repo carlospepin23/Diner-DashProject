@@ -22,6 +22,7 @@ class Player: public Entity{
         void setFacing(string);
         void setPlayerStop(bool);
         BaseCounter* getActiveCounter();
-        Burger* getBurger(){ return burger;
-        }
+        Burger* getBurger();
+        void discardBurger();
+        
 };
