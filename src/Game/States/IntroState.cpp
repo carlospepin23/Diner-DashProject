@@ -19,6 +19,8 @@ void IntroState::render() {
 	ofDrawBitmapString("Game Instructions: ",(ofGetWidth()/2) - 50 ,(ofGetHeight()/2) + 25);
 	ofDrawBitmapString("-> Press 'e' when the player is in front of the counter to pickup ingredients",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 45);
 	ofDrawBitmapString("-> Press 's' to serve the clients",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 60);
+	ofDrawBitmapString("-> Press 'u' to undo the last ingredient",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 75);
+	ofDrawBitmapString("-> Use '<-' (Left Arrow) or '->' (Right Arrow) to move the player",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 90);
 	startButton->render();
 }
 

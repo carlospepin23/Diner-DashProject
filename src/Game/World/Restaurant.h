@@ -39,6 +39,7 @@ class Restaurant {
         void tick();
         void render();
         void keyPressed(int key);
+        void keyReleased(int key);
         EntityManager* getEntityManager();
         int getMoney();
 };

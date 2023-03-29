@@ -19,11 +19,13 @@ Player::Player(int x, int y, int width, int height, ofImage sprite, EntityManage
 }
 void Player::tick(){
     chefAnim->tick();
-    if(facing == "left"){
+    
+    if(facing == "left"  && stop==false){ //FIX Minor bugs respecto al movimiento del chef cuando toca un limite.
         x-=speed;
-    }else if(facing == "right"){
+    }else if(facing == "right"  && stop==false){
         x+=speed;
     }
+    //Limites
     if(x <= 0){
         facing = "right";
     }else if(x + width >= ofGetWidth()){
@@ -57,8 +59,17 @@ void Player::keyPressed(int key){
     }
     if(key == 'u'){
         if(burger->hasIngredients()){
-            burger->undoIngredient(); //FIX que also se pueda hacer undo mientras no esta frente a algun ingrediente.
+            burger->undoIngredient();
         }
+    }
+
+    if(key == OF_KEY_LEFT){ //el chef se mueve para la izquierda cuando se presiona left arrow
+        setFacing("left");
+        setPlayerStop(false);
+    }
+    else if (key == OF_KEY_RIGHT){ //el chef se mueve para la derecha cuando se presiona right arrow
+        setFacing("right");
+        setPlayerStop(false);
     }
 
 }
@@ -73,8 +84,16 @@ BaseCounter* Player::getActiveCounter(){
 }
 
 void Player::keyReleased(int key) {
+    if(key == OF_KEY_RIGHT || key == OF_KEY_LEFT){
+       setPlayerStop(true);
+    }
+    
 }
 void Player::mousePressed(int x, int y, int button) {
 }
 
 void Player::setFacing(string facing){ this->facing = facing; }
+
+void Player::setPlayerStop(bool t){
+    this->stop=t;
+ }

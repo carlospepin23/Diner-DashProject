@@ -8,6 +8,7 @@ class Player: public Entity{
     private:
         int speed = 5;
         string facing = "right";
+        bool stop; //Encargado de que el chef se quede quieto si no se estan presionando los arrows
         Animation *chefAnim;
         Burger *burger;
         EntityManager* entityManager;
@@ -19,6 +20,7 @@ class Player: public Entity{
         void keyReleased(int);
         void mousePressed(int, int, int);
         void setFacing(string);
+        void setPlayerStop(bool);
         BaseCounter* getActiveCounter();
         Burger* getBurger(){ return burger;
         }

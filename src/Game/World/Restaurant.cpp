@@ -131,6 +131,11 @@ void Restaurant::keyPressed(int key) {
     }
 }
 
+void Restaurant::keyReleased(int key) {
+    player->keyReleased(key);
+
+}
+
 EntityManager* Restaurant::getEntityManager(){
     return entityManager;
 }
