@@ -5,7 +5,7 @@ GameState::GameState() {
 }
 void GameState::tick() {
 	restaurant->tick();
-	if(restaurant->getEntityManager()->getClientsMad()==1){
+	if(restaurant->getEntityManager()->getClientsMad()==10){
 		setNextState("Lose");
 		setFinished(true);
 	

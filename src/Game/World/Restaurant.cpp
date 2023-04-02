@@ -98,10 +98,14 @@ void Restaurant::tick() {
 void Restaurant::generateClient(){
     Burger* b = new Burger(72, 100, 50, 25);
     b->addIngredient(botBread);
-    b->addIngredient(burger);
-    b->addIngredient(cheese);
-    b->addIngredient(tomato);
-    b->addIngredient(lettuce);
+    for(int i = 0; i < ofRandom(1,3); i++)
+    {
+        int randNum = ofRandom(1,4);
+        if(randNum == 1) b->addIngredient(burger);
+        else if(randNum == 2) b->addIngredient(cheese);
+        else if(randNum == 3) b->addIngredient(tomato);
+        else b->addIngredient(lettuce);
+    }
     b->addIngredient(topBread);
     entityManager->addClient(new Client(0, 50, 64, 72,people[ofRandom(8)], b));
 }
