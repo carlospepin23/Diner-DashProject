@@ -11,13 +11,14 @@ class Burger {
     int x, y, width, height;
     vector<Item *> ingredients;
 
-  public:
+public:
     Burger(int, int, int, int);
     void addIngredient(Item *item);
     void undoIngredient();
     bool hasIngredients();
     void render();
     void clear();
+    bool equals(Burger*);
     void setY(int y) {
         this->y = y;
     }

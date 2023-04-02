@@ -40,3 +40,20 @@ bool Burger::hasIngredients(){
         return false;
     }
 }
+
+bool Burger::equals(Burger* player_b){
+    
+    if((player_b->ingredients[0]->name!="bottomBun") && (player_b->ingredients[ingredients.size()-1]->name!="topBun")) return false;
+
+    if(this->ingredients.size()!=player_b->ingredients.size()) return false;
+    
+    int buns=0;
+    for(Item *ingredients: player_b->ingredients){
+        if(ingredients->name=="bottomBun" || ingredients->name=="topBun") buns+=1;
+        
+    }
+    if(buns<2) return false;
+
+    return true;
+
+    }
