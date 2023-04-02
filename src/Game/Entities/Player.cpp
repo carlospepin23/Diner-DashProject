@@ -54,6 +54,7 @@ void Player::keyPressed(int key){
             Item* item = ac->getItem();
             if(item != nullptr){
                 burger->addIngredient(item);
+                burger->order[item->name]++; //IDEA: Deberia recuperar su dolar, por tener de vuelta su igrediente
             }
         }
     }
@@ -98,9 +99,15 @@ void Player::setPlayerStop(bool t){
     this->stop=t;
 }
 
-void Player::discardBurger(){ //discards the already served burger
+void Player::discardBurger(){ //discards the already served burger, and its quantitys registered
     // this->burger = new Burger(ofGetWidth()-110, 100, 100, 50); //working method placed just in case the code needs to be refactored for other implementations.
     this->burger->clear();
+    this->burger->order={
+      {"tomato",0},
+      {"lettuce",0},
+      {"cheese",0},
+      {"patty",0}  
+    };
 }
 
 Burger* Player::getBurger(){

@@ -19,7 +19,7 @@ void EntityManager::removeLeavingClients(){
     while(tempClient != nullptr){
         if(tempClient->isLeaving){
             if(tempClient->isMad){
-                clientsMad+=1;
+                clientsMad++;
             }
             if(prevClient == nullptr){
                 firstClient = tempClient->nextClient;

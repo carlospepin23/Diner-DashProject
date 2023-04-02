@@ -57,7 +57,7 @@ void Restaurant::initCounters(){
     breadCounterImg.cropFrom(counterSheet,0,63,34,56);//buns
     entityManager->addEntity(new BaseCounter(0,yOffset-16, counterWidth, 117, nullptr, plateCounterImg));
     entityManager->addEntity( new BaseCounter(counterWidth,yOffset-7, counterWidth,108, cheese, cheeseCounterImg));
-    entityManager->addEntity(new BaseCounter(counterWidth*2,yOffset, counterWidth, 102, burger, stoveCounterImg));
+    entityManager->addEntity(new BaseCounter(counterWidth*2,yOffset, counterWidth, 102, burger, stoveCounterImg)); //Imagen de horno con carne
     entityManager->addEntity(new BaseCounter(counterWidth*3, yOffset, counterWidth, 102, lettuce, lettuceCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*4,yOffset, counterWidth, 102, nullptr, emptyCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*5, yOffset -10, counterWidth, 113, tomato, tomatoCounterImg));
@@ -101,10 +101,22 @@ void Restaurant::generateClient(){
     for(int i = 0; i < ofRandom(1,3); i++)
     {
         int randNum = ofRandom(1,4);
-        if(randNum == 1) b->addIngredient(burger);
-        else if(randNum == 2) b->addIngredient(cheese);
-        else if(randNum == 3) b->addIngredient(tomato);
-        else b->addIngredient(lettuce);
+        if(randNum == 1){
+            b->addIngredient(burger);
+            b->order[burger->name]++;
+        }
+        else if(randNum == 2){
+            b->addIngredient(cheese);
+            b->order[cheese->name]++;
+        }
+        else if(randNum == 3){
+            b->addIngredient(tomato);
+            b->order[tomato->name]++;
+        }
+        else{
+            b->addIngredient(lettuce);
+            b->order[lettuce->name]++;
+        }
     }
     b->addIngredient(topBread);
     entityManager->addClient(new Client(0, 50, 64, 72,people[ofRandom(8)], b));

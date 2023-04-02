@@ -40,14 +40,16 @@ void Client::tick(){
     }
 }
 
-int Client::serve(Burger* burger){
-    if(isMad == false)
-    {
-        isLeaving = true;
-        return 10;
+int Client::serve(Burger* b){
+    if(isMad == false){
+        if(this->burger->equals(b)){
+            isLeaving = true;
+            return 10;
+        }
+        return 0; // IDEA: Deberia haber repercusiones por entregar un burger incorrecto
+        
     }
-    else
-    {
+    else{
         isLeaving = true;
         return 0; 
     }
