@@ -25,7 +25,6 @@ public:
     void render();
     void clear();
     bool equals(Burger*);
-    bool equals(Burger*);
     void setY(int y) {
         this->y = y;
     }
