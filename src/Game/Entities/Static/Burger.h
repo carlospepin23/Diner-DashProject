@@ -12,13 +12,18 @@ class Burger {
     vector<Item *> ingredients;
 
 public:
+<<<<<<< HEAD
     map<string,int> order={
+=======
+    unordered_map<string,int> order={
+>>>>>>> AddedBurgerCost
       {"tomato",0},
       {"lettuce",0},
       {"cheese",0},
       {"patty",0}  
     };
     Burger(int, int, int, int);
+    int getBurgerCost(Burger*);
     void addIngredient(Item *item);
     void undoIngredient();
     bool hasIngredients();

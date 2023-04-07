@@ -43,11 +43,18 @@ void Client::tick(){
 int Client::serve(Burger* b){
     if(isMad == false){
         if(this->burger->equals(b)){
+<<<<<<< HEAD
             isLeaving = true;
             return 10;
         }
         return 0; // IDEA: Deberia haber repercusiones por entregar un burger incorrecto
         
+=======
+            isLeaving = true; 
+            return burger->getBurgerCost(burger);
+        }
+        return 0; //No quitar! Es para que el equal method funcione, y no de problemas con el return type
+>>>>>>> AddedBurgerCost
     }
     else{
         isLeaving = true;
