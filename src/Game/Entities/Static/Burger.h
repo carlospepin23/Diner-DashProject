@@ -12,7 +12,7 @@ class Burger {
     vector<Item *> ingredients;
 
 public:
-    map<string,int> order={
+    unordered_map<string,int> order={
       {"tomato",0},
       {"lettuce",0},
       {"cheese",0},
