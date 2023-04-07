@@ -40,14 +40,15 @@ void Client::tick(){
     }
 }
 
-int Client::serve(Burger* burger){
-    if(isMad == false)
-    {
-        isLeaving = true;
-        return 10;
+int Client::serve(Burger* b){
+    if(isMad == false){
+        if(this->burger->equals(b)){
+            isLeaving = true; 
+            return burger->getBurgerCost(burger);
+        }
+        return 0; //No quitar! Es para que el equal method funcione, y no de problemas con el return type
     }
-    else
-    {
+    else{
         isLeaving = true;
         return 0; 
     }
