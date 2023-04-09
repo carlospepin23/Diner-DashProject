@@ -44,7 +44,7 @@ int Client::serve(Burger* b){
     if(isMad == false){
         if(this->burger->equals(b)){
             isLeaving = true;
-            return burger->getBurgerCost(b);
+            return burger->getBurgerCost(burger);
         }
         else
         {
@@ -62,7 +62,7 @@ int Client::serve(Burger* b){
     }
     else{
         isLeaving = true;
-        return 0;
+        return 0; 
     }
    
 }
