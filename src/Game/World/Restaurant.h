@@ -25,9 +25,11 @@ class Restaurant {
         Item* tomato;
         Item* burger;
         Item* u_burger;
+        Item* onion;
         Item* botBread;
         Item* topBread;
         ofImage Table_PNG;
+        ofImage doorEntrance;
         ofImage floor;
         ofImage plant1;
         ofImage plant2;
