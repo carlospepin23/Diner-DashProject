@@ -42,12 +42,16 @@ void Client::tick(){
 
 int Client::serve(Burger* b){
     if(isMad == false){
-        if(this->burger->equals(b)){
+        if(this->burger->equals(b)){ //burger igual al primer cliente
             isLeaving = true;
-            return 10;
+            return burger->getBurgerCost(burger);
         }
-        return 0; // IDEA: Deberia haber repercusiones por entregar un burger incorrecto
-        
+        else //Si no es igual al primero se lo ofrece al siguiente
+        {
+            if(nextClient != nullptr) return nextClient->serve(b);
+            
+            else return 0;
+        }
     }
     else{
         isLeaving = true;

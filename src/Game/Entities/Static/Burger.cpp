@@ -77,3 +77,15 @@ bool Burger::equals(Burger* player_b){
     return true;
 
     }
+
+int Burger::getBurgerCost(Burger* burger){
+    int totVal = 2; // Burger will always have 2 buns 
+    for(int i = 1; i <= burger->ingredients.size()-2; i++)
+    {
+        if(burger->ingredients[i]->name == "cheese") totVal += 3;
+        else if(burger->ingredients[i]->name == "lettuce") totVal += 2;
+        else if(burger->ingredients[i]->name == "tomato") totVal += 2;
+        else if(burger->ingredients[i]->name == "patty") totVal += 4;
+    } 
+    return totVal;
+}

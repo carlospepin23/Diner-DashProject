@@ -19,6 +19,7 @@ public:
       {"patty",0}  
     };
     Burger(int, int, int, int);
+    int getBurgerCost(Burger*);
     void addIngredient(Item *item);
     void undoIngredient();
     bool hasIngredients();

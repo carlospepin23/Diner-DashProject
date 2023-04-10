@@ -100,7 +100,7 @@ void Restaurant::generateClient(){
     b->addIngredient(botBread);
     for(int i = 0; i < ofRandom(1,3); i++)
     {
-        int randNum = ofRandom(1,4);
+        int randNum = ofRandom(1,5);
         if(randNum == 1){
             b->addIngredient(burger);
             b->order[burger->name]++;
@@ -113,7 +113,7 @@ void Restaurant::generateClient(){
             b->addIngredient(tomato);
             b->order[tomato->name]++;
         }
-        else{
+        else if(randNum == 4){
             b->addIngredient(lettuce);
             b->order[lettuce->name]++;
         }
