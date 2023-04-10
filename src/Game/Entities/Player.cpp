@@ -34,11 +34,10 @@ void Player::tick(){
 }
 
 void Player::render(){
-    // BaseCounter *ac = getActiveCounter();                             //Foto de carne (STEP3)
     BaseCounter *ac = getActiveCounter(); 
 
-    if(dynamic_cast<StoveCounter*>(ac)){                   //2
-            ac = dynamic_cast<StoveCounter*>(ac);
+    if(dynamic_cast<StoveCounter*>(ac)){                   
+            ac = dynamic_cast<StoveCounter*>(ac); //Permite que se vea el StoveCounter
         }
 
     if (ac != nullptr) {
@@ -58,12 +57,12 @@ void Player::keyPressed(int key) {
         BaseCounter* ac = getActiveCounter();
         if (dynamic_cast<StoveCounter*>(ac)) {
             StoveCounter* stove = dynamic_cast<StoveCounter*>(ac);
-            if (stove->isPattyCooked()) {  // Check if patty is cooked
-                Item* item = stove->getItem();  // Get item from stove
+            if (stove->isPattyCooked()) {  // Chequea si el patty esta cocinado
+                Item* item = stove->getItem();  // Consigue el objeto desde el stove
                 if (item != nullptr) {
-                    burger->addIngredient(item);  // Add item to burger
-                    burger->order[item->name]++;  // Increment ingredient count in burger order
-                    stove->pickupItem();  // Pick up cooked patty from stove
+                    burger->addIngredient(item);  // Añade el objeto al burger
+                    burger->order[item->name]++;  // Inrementa el counter del ingrediente en order
+                    stove->pickupItem();  // Recoje la carne cocinada desde el stove
                 }
             }
             else{
@@ -80,7 +79,6 @@ void Player::keyPressed(int key) {
             }
         }
     }
-
 
 
     if(key == 'u'){
@@ -101,11 +99,10 @@ void Player::keyPressed(int key) {
 }
 BaseCounter* Player::getActiveCounter(){                                                            //FUNCION PARA VER SI ESTA FRENTE AL COUNTER
     for(Entity* e:entityManager->entities){
-        // StoveCounter* c = dynamic_cast<StoveCounter*>(e);
 
-        BaseCounter* c = dynamic_cast<BaseCounter*>(e);       //1
+        BaseCounter* c = dynamic_cast<BaseCounter*>(e);      
 
-        if(dynamic_cast<StoveCounter*>(e)){                   //2
+        if(dynamic_cast<StoveCounter*>(e)){                   //Permite que se vea el StoveCounter
             c = dynamic_cast<StoveCounter*>(e);
         }
 

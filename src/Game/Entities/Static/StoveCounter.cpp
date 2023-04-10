@@ -5,27 +5,22 @@
 
 #include "BaseCounter.h"
 
-StoveCounter::StoveCounter(int x, int y, int width, int height, Item* c_item, Item* u_item, ofImage sprite): BaseCounter(x, y, width, height, c_item, sprite) {
-    cooking = false;  // Initialize cooking flag to false
+StoveCounter::StoveCounter(int x, int y, int width, int height, Item* u_item, Item* c_item, ofImage sprite): BaseCounter(x, y, width, height, c_item, sprite) {
+    cooking = false;  // Inicializa el bool cooking a falso
+    this->c_item=u_item; //Objeto cocinado y el crudo estan invertidos on purpose
+    this->u_item=c_item;
+    setCurrent_Item(this->u_item);
 }
 
 void StoveCounter::showItem(){
-    if(pattyCooked){
-        current_item=c_item;
-    }
-    else{
-        current_item=u_item;
-    }
 
-
-    if (current_item!= nullptr){
-        current_item->sprite.draw(x+width/2 -25, y-30, 50, 30);
+    if (getItem()!= nullptr){
+        getItem()->sprite.draw(x+width/2 -25, y-30, 50, 30);
     }
 }
 
-
 void StoveCounter::tick(){
-    if (!pattyCooked) {  // Only increment ticks if patty is not already cooked
+    if (!pattyCooked) {  // Si no esta cocinado, entonces lo incrementa
         ticks++;
         if(ticks >= time){
             pattyCooked=true;
@@ -34,26 +29,26 @@ void StoveCounter::tick(){
 }
 
 void StoveCounter::update() {
-    while (cooking) {  // If cooking flag is true, update the cooking process
-        tick();  // Call tick() to progress cooking
-        if (pattyCooked) {  // If patty is cooked, update item state and reset cooking flag
-            current_item = c_item;  // Change current item to cooked item
-            cooking = false;  // Reset cooking flag
+    while (cooking) {  // Si esta cocinando, continua el proceso de update
+        tick();  // Continua llamando los ticks
+        if (pattyCooked) {  // Si el patty esta cocinado, actualiza el objeto por el cocinado, y restablece el bool de cooking
+            setCurrent_Item(this->c_item);  // Cambia el objeto actual por el cocinado
+            cooking = false;  // Restablece el bool de cooking
         }
     }
 }
 
 void StoveCounter::startCooking() {
-    if (!cooking && !pattyCooked) {  // Only start cooking if not already cooking and patty is not cooked
-        cooking = true;  // Set cooking flag to true
+    if (!cooking && !pattyCooked) {  // Solo empieza a cocinar si no se esta cocinando ni esta ya cocinado
+        cooking = true;  // Establece el bool cooking a cierto
     }
     update();
     
 }
 
 void StoveCounter::pickupItem() {
-    if (pattyCooked) {  // Only pickup item if patty is cooked
-        current_item = nullptr;  // Set current item to nullptr
-        pattyCooked = false;  // Reset patty cooked flag
+    if (pattyCooked) { 
+        setCurrent_Item(nullptr);
+        pattyCooked = false; 
     }
 }
