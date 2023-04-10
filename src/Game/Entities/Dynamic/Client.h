@@ -6,12 +6,13 @@
 class Client: public Entity{
     private:
         Burger* burger;
-        int originalPatience;
+        // int originalPatience;
         int patience=2000;
     public:
         Client(int, int, int, int, ofImage, Burger*);
         virtual ~Client();
-        int getPatience();
+        int getPatience(){return this->patience;}
+        void resetPatience(){this->patience=2000;}
         void tick();
         void render();
         int serve(Burger*);

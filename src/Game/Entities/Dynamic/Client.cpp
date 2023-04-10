@@ -7,11 +7,6 @@ Client::~Client(){
     delete burger;
 }
 
-int Client::getPatience()
-{
-    return patience;
-}
-
 void Client::render(){
     burger->render();
     if((patience < 1500) && (patience > 1000))
