@@ -57,7 +57,7 @@ void Player::keyPressed(int key) {
         if (dynamic_cast<StoveCounter*>(ac)) {
             StoveCounter* stove = dynamic_cast<StoveCounter*>(ac);
             if (stove->isPattyCooked()) {  // Chequea si el patty esta cocinado
-                Item* item = stove->getItem();  // Consigue el objeto desde el stove
+                Item* item = stove->getItem();
                 if (item != nullptr) {
                     burger->addIngredient(item);  // Añade el objeto al burger
                     burger->order[item->name]++;  // Inrementa el counter del ingrediente en order

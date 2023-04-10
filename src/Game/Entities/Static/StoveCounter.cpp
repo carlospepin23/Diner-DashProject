@@ -13,7 +13,6 @@ StoveCounter::StoveCounter(int x, int y, int width, int height, Item* u_item, It
 }
 
 void StoveCounter::showItem(){
-
     if (getItem()!= nullptr){
         getItem()->sprite.draw(x+width/2 -25, y-30, 50, 30);
     }
@@ -28,7 +27,10 @@ void StoveCounter::tick(){
     }
 }
 
-void StoveCounter::update() {
+void StoveCounter::startCooking() {
+    if (!cooking && !pattyCooked) {  // Solo empieza a cocinar si no se esta cocinando ni esta ya cocinado
+        cooking = true;  // Establece el bool cooking a cierto
+    }
     while (cooking) {  // Si esta cocinando, continua el proceso de update
         tick();  // Continua llamando los ticks
         if (pattyCooked) {  // Si el patty esta cocinado, actualiza el objeto por el cocinado, y restablece el bool de cooking
@@ -36,19 +38,13 @@ void StoveCounter::update() {
             cooking = false;  // Restablece el bool de cooking
         }
     }
-}
-
-void StoveCounter::startCooking() {
-    if (!cooking && !pattyCooked) {  // Solo empieza a cocinar si no se esta cocinando ni esta ya cocinado
-        cooking = true;  // Establece el bool cooking a cierto
-    }
-    update();
     
 }
 
 void StoveCounter::pickupItem() {
     if (pattyCooked) { 
         setCurrent_Item(this->u_item);
-        pattyCooked = false; 
+        pattyCooked = false;
+        resetTicks();
     }
 }
