@@ -66,11 +66,11 @@ bool Burger::equals(Burger* player_b){
             if(player_b->ingredients[j]->name==this->ingredients[i]->name){
                 c++;
                 itHas_Ingredient=true;
-                break;
             }
         }
 
-        if(itHas_Ingredient == false|| c!=player_b->order[ingredients[i]->name]) return false;
+        if(itHas_Ingredient == false) return false;
+        else if (c!=player_b->order[ingredients[i]->name]) return false;
         
     }
 
@@ -79,8 +79,7 @@ bool Burger::equals(Burger* player_b){
 
     }
 
-int Burger::getBurgerCost(Burger* burger)
-{
+int Burger::getBurgerCost(Burger* burger){
     int totVal = 2; // Burger will always have 2 buns 
     for(int i = 1; i <= burger->ingredients.size()-2; i++)
     {

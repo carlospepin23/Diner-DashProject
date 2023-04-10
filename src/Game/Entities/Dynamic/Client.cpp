@@ -48,23 +48,16 @@ void Client::tick(){
 
 int Client::serve(Burger* b){
     if(isMad == false){
-        if(this->burger->equals(b)){
+        if(this->burger->equals(b)){ //burger igual al primer cliente
             isLeaving = true;
             return burger->getBurgerCost(burger);
         }
-        else
+        else //Si no es igual al primero se lo ofrece al siguiente
         {
-            if(nextClient != nullptr)
-            {
-                return nextClient->serve(b);
-            }
-            else
-            {
-                isLeaving = false;
-                return 0;
-            }
+            if(nextClient != nullptr) return nextClient->serve(b);
+            
+            else return 0;
         }
-        return 0; //No quitar! Es para que el equal method funcione, y no de problemas con el return type
     }
     else
     {
