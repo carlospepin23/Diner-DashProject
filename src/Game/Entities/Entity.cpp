@@ -8,8 +8,7 @@ Entity::Entity(int x, int y, int width, int height, ofImage sprite){
     this->sprite = sprite;
 }
 
-void Entity::tick(){
-    
+void Entity::tick(){                                                //Cada entidad tiene su tick, pero no esta definido 
 }
 void Entity::render(){
     ofSetColor (255,255,255);

@@ -34,7 +34,12 @@ void Player::tick(){
 }
 
 void Player::render(){
-    BaseCounter *ac = getActiveCounter();
+    BaseCounter *ac = getActiveCounter(); 
+
+    if(dynamic_cast<StoveCounter*>(ac)){                   
+            ac = dynamic_cast<StoveCounter*>(ac); //Permite que se vea el StoveCounter
+        }
+
     if (ac != nullptr) {
         ac->showItem();
     }
@@ -47,17 +52,35 @@ void Player::render(){
     burger->render();
 }
 
-void Player::keyPressed(int key){
-    if(key == 'e'){
+void Player::keyPressed(int key) {
+    if (key == 'e') {
         BaseCounter* ac = getActiveCounter();
-        if(ac != nullptr){
-            Item* item = ac->getItem();
-            if(item != nullptr){
-                burger->addIngredient(item);
-                burger->order[item->name]++; //IDEA: Deberia recuperar su dolar, por tener de vuelta su igrediente
+        if (dynamic_cast<StoveCounter*>(ac)) {
+            StoveCounter* stove = dynamic_cast<StoveCounter*>(ac);
+            if (stove->isPattyCooked()) {  // Chequea si el patty esta cocinado
+                Item* item = stove->getItem();  // Consigue el objeto desde el stove
+                if (item != nullptr) {
+                    burger->addIngredient(item);  // Añade el objeto al burger
+                    burger->order[item->name]++;  // Inrementa el counter del ingrediente en order
+                    stove->pickupItem();  // Recoje la carne cocinada desde el stove
+                }
+            }
+            else{
+                stove->startCooking();
+            }
+        }
+        else{
+            if(ac != nullptr){
+                Item* item = ac->getItem();                           
+                if(item != nullptr){
+                    burger->addIngredient(item);
+                    burger->order[item->name]++;
+                }
             }
         }
     }
+
+
     if(key == 'u'){
         if(burger->hasIngredients()){
             burger->undoIngredient();
@@ -74,9 +97,15 @@ void Player::keyPressed(int key){
     }
 
 }
-BaseCounter* Player::getActiveCounter(){
+BaseCounter* Player::getActiveCounter(){                                                            //FUNCION PARA VER SI ESTA FRENTE AL COUNTER
     for(Entity* e:entityManager->entities){
-        BaseCounter* c = dynamic_cast<BaseCounter*>(e);
+
+        BaseCounter* c = dynamic_cast<BaseCounter*>(e);      
+
+        if(dynamic_cast<StoveCounter*>(e)){                   //Permite que se vea el StoveCounter
+            c = dynamic_cast<StoveCounter*>(e);
+        }
+
         if(x + e->getWidth()/2 >= e->getX() && x +e->getWidth()/2 <e->getX() + e->getWidth()){
             return c;
         }
@@ -100,7 +129,6 @@ void Player::setPlayerStop(bool t){
 }
 
 void Player::discardBurger(){ //discards the already served burger, and its quantitys registered
-    // this->burger = new Burger(ofGetWidth()-110, 100, 100, 50); //working method placed just in case the code needs to be refactored for other implementations.
     this->burger->clear();
     this->burger->order={
       {"tomato",0},

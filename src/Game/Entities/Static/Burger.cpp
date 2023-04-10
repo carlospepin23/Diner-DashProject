@@ -69,7 +69,8 @@ bool Burger::equals(Burger* player_b){
             }
         }
 
-        if(itHas_Ingredient == false|| c!=player_b->order[ingredients[i]->name]) return false;
+        if(itHas_Ingredient == false) return false;
+        else if (c!=player_b->order[ingredients[i]->name]) return false;
         
     }
 
