@@ -6,6 +6,12 @@ Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burg
 Client::~Client(){
     delete burger;
 }
+
+int Client::getPatience()
+{
+    return patience;
+}
+
 void Client::render(){
     burger->render();
     if((patience < 1500) && (patience > 1000))
@@ -53,9 +59,10 @@ int Client::serve(Burger* b){
             else return 0;
         }
     }
-    else{
+    else
+    {
         isLeaving = true;
-        return 0; 
+        return 0;
     }
    
 }

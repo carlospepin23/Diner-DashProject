@@ -8,6 +8,7 @@ class Client: public Entity{
     public:
         Client(int, int, int, int, ofImage, Burger*);
         virtual ~Client();
+        int getPatience();
         void tick();
         void render();
         int serve(Burger*);

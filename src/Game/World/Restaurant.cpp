@@ -90,6 +90,7 @@ void Restaurant::initClients(){
     people.push_back(temp);
 }
 void Restaurant::tick() {
+    if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient))) money = money/2;
     ticks++;
     if(ticks % 400 == 0){
         generateClient();
@@ -124,7 +125,6 @@ void Restaurant::generateClient(){
         }
     }
     b->addIngredient(topBread);
-    entityManager->addClient(new Client(0, 50, 64, 72,people[ofRandom(8)], b));
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
