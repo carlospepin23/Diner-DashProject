@@ -6,6 +6,12 @@ Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burg
 Client::~Client(){
     delete burger;
 }
+
+int Client::getPatience()
+{
+    return patience;
+}
+
 void Client::render(){
     burger->render();
     if((patience < 1500) && (patience > 1000))
@@ -60,9 +66,10 @@ int Client::serve(Burger* b){
         }
         return 0; //No quitar! Es para que el equal method funcione, y no de problemas con el return type
     }
-    else{
+    else
+    {
         isLeaving = true;
-        return 0; 
+        return 0;
     }
    
 }
