@@ -8,11 +8,7 @@ Player *Restaurant::getPlayer() { return player; }
 void Restaurant::setPlayer(Player *player) { this->player = player; }
 
 Restaurant::Restaurant() {
-    ofImage variousSprites,door;
     floor.load("images/floor.jpg");
-    variousSprites.load("images/sprite.png");
-    door.cropFrom(variousSprites,263,116,32,49);
-    doorEntrance=door;
     //Cargando las imagenes
     plant1.load("images/P1_PNG.png");
     plant2.load("images/P2_PNG.png");
@@ -30,47 +26,45 @@ Restaurant::Restaurant() {
 
 }
 void Restaurant::initItems(){
-    ofImage burgerSpriteSheet, burger_fSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, u_burgerImg, onionImg, botBreadImg, topBreadImg, plateImg;
+    ofImage burgerSpriteSheet, burger_fSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, u_burgerImg, botBreadImg, topBreadImg, plateImg;
     burgerSpriteSheet.load("images/burger.png");
     burger_fSpriteSheet.load("images/burger_f.png");
 
     topBreadImg.cropFrom(burgerSpriteSheet, 25, 16, 112, 43); // top bun
     burgerImg.cropFrom(burgerSpriteSheet, 30, 134, 103, 48); // patty
     u_burgerImg.cropFrom(burger_fSpriteSheet, 30, 134, 103, 48); // uncooked patty
-    onionImg.cropFrom(burgerSpriteSheet, 319, 157,104, 40); //onion               
+
     cheeseImg.cropFrom(burgerSpriteSheet, 169, 213, 102, 39); // cheese
     tomatoImg.cropFrom(burgerSpriteSheet, 169, 158, 110, 41); // tomato
     lettuceImg.cropFrom(burgerSpriteSheet, 161, 62, 117, 34); // lettuce
     botBreadImg.cropFrom(burgerSpriteSheet, 444, 270, 115, 39); // bottom bun
     plateImg.cropFrom(burgerSpriteSheet, 575, 263, 131, 51); // plate
-    
 
     cheese = new Item(cheeseImg, "cheese");
     lettuce = new Item(lettuceImg, "lettuce");
     tomato = new Item(tomatoImg, "tomato");
     burger = new Item(burgerImg, "patty");
     u_burger = new Item(u_burgerImg, "patty");
-    onion = new Item(onionImg,"onion");
     botBread = new Item(botBreadImg, "bottomBun");
     topBread = new Item(topBreadImg, "topBun");
 }
 void Restaurant::initCounters(){
     int counterWidth = 96;
     int yOffset = 500;
-    ofImage counterSheet, plateCounterImg, cheeseCounterImg, stoveCounterImg, lettuceCounterImg, onionCounterImg, tomatoCounterImg, breadCounterImg;
+    ofImage counterSheet, plateCounterImg, cheeseCounterImg, stoveCounterImg, lettuceCounterImg, emptyCounterImg, tomatoCounterImg, breadCounterImg;
     counterSheet.load("images/kitchen_cabinets_by_ayene_chan.png");
     stoveCounterImg.cropFrom(counterSheet, 224,12,32,43);//stoveTop
     lettuceCounterImg.cropFrom(counterSheet,96,76,32,43);//Vegetables
-    onionCounterImg.cropFrom(counterSheet,65,204,32,43);//Cebolla                                                 
+    emptyCounterImg.cropFrom(counterSheet,0,245,30,43);//Empty                                                      //Anadir algun ingrediente
     tomatoCounterImg.cropFrom(counterSheet,96,200,32,48);//fruit basket
     cheeseCounterImg.cropFrom(counterSheet,64,73,32,46);//cheese
     plateCounterImg.cropFrom(counterSheet,0,133,32,50);//plates
     breadCounterImg.cropFrom(counterSheet,0,63,34,56);//buns
     entityManager->addEntity(new BaseCounter(0,yOffset-16, counterWidth, 117, nullptr, plateCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth,yOffset-7, counterWidth,108, cheese, cheeseCounterImg));
-    entityManager->addEntity(new StoveCounter(counterWidth*2,yOffset, counterWidth, 102, u_burger, burger, stoveCounterImg)); 
+    entityManager->addEntity(new StoveCounter(counterWidth*2,yOffset, counterWidth, 102, u_burger, burger, stoveCounterImg)); //Imagen de horno con carne
     entityManager->addEntity(new BaseCounter(counterWidth*3, yOffset, counterWidth, 102, lettuce, lettuceCounterImg));
-    entityManager->addEntity(new BaseCounter(counterWidth*4,yOffset, counterWidth, 102, nullptr, onionCounterImg)); //cambiar nullptr por cebolla
+    entityManager->addEntity(new BaseCounter(counterWidth*4,yOffset, counterWidth, 102, nullptr, emptyCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*5, yOffset -10, counterWidth, 113, tomato, tomatoCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*6, yOffset-32, counterWidth, 133, botBread, breadCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*7, yOffset-32, counterWidth, 133, topBread, breadCounterImg));
@@ -131,16 +125,24 @@ void Restaurant::generateClient(){
         }
     }
     b->addIngredient(topBread);
+    int generateInspector = ofRandom(0,50);
+    if(generateInspector != 25)
+    {
+        entityManager->addClient(new Client(0, 50, 64, 72, people[ofRandom(8)], b));
+    }
+    else
+    {
+        entityManager->addClient(new Inspector(0, 50, 64, 72, people[ofRandom(8)], b));
+    }
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
-    doorEntrance.draw(250,0,75,100); //dibuja la puerta de entrada
-    Table_PNG.draw(500, 50, 100, 100); //dibuja mesa #1
-    plant1.draw(525,30, 50, 50); //dibuja planta de mesa #1
-    Table_PNG.draw(500, 150, 100, 100); //dibuja mesa #2
-    plant2.draw(525,120, 60, 60); //dibuja planta de mesa #2
-    Table_PNG.draw(500, 250, 100, 100); //dibuja mesa #3
-    plant3.draw(525,220, 60, 60); //dibuja planta de mesa #3
+    Table_PNG.draw(500, 50, 100, 100); //Arreglar coordenadas para que sean compatibles con resize
+    plant1.draw(525,30, 50, 50);
+    Table_PNG.draw(500, 150, 100, 100);
+    plant2.draw(525,120, 60, 60);
+    Table_PNG.draw(500, 250, 100, 100);
+    plant3.draw(525,220, 60, 60);
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
@@ -161,8 +163,18 @@ void Restaurant::keyPressed(int key) {
     if(key == 'e'){
         money-=1; //Aplica el costo de los ingredientes al total
     }
-    // if(key == 'p'){
-    //     money-=10; //Aplica el costo de los ingredientes al total
-    // }
 
+}
+
+void Restaurant::keyReleased(int key) {
+    player->keyReleased(key);
+
+}
+
+EntityManager* Restaurant::getEntityManager(){
+    return entityManager;
+}
+
+int Restaurant::getMoney(){
+    return money;
 }
