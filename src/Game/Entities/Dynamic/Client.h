@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Entity.h"
 #include "Burger.h"
 

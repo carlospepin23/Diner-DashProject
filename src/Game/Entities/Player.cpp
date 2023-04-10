@@ -35,7 +35,6 @@ void Player::tick(){
 
 void Player::render(){
     BaseCounter *ac = getActiveCounter(); 
-
     if(dynamic_cast<StoveCounter*>(ac)){                   
             ac = dynamic_cast<StoveCounter*>(ac); //Permite que se vea el StoveCounter
         }

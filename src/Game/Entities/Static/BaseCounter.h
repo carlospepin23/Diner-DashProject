@@ -14,7 +14,7 @@ class BaseCounter: public Entity {
     public:
         BaseCounter(int x, int y, int width, int height, Item* item, ofImage sprite);
         Item* getItem();
-        void showItem();
+        virtual void showItem();
 
 };
 

@@ -7,8 +7,8 @@
 
 StoveCounter::StoveCounter(int x, int y, int width, int height, Item* u_item, Item* c_item, ofImage sprite): BaseCounter(x, y, width, height, c_item, sprite) {
     cooking = false;  // Inicializa el bool cooking a falso
-    this->c_item=u_item; //Objeto cocinado y el crudo estan invertidos on purpose
-    this->u_item=c_item;
+    this->c_item=c_item; //Objeto cocinado y el crudo estan invertidos on purpose
+    this->u_item=u_item;
     setCurrent_Item(this->u_item);
 }
 
@@ -48,7 +48,7 @@ void StoveCounter::startCooking() {
 
 void StoveCounter::pickupItem() {
     if (pattyCooked) { 
-        setCurrent_Item(nullptr);
+        setCurrent_Item(this->u_item);
         pattyCooked = false; 
     }
 }

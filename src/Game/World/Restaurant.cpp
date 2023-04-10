@@ -28,7 +28,7 @@ Restaurant::Restaurant() {
 void Restaurant::initItems(){
     ofImage burgerSpriteSheet, burger_fSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, u_burgerImg, botBreadImg, topBreadImg, plateImg;
     burgerSpriteSheet.load("images/burger.png");
-    burger_fSpriteSheet.load("images/burger_f.jpg");
+    burger_fSpriteSheet.load("images/burger_f.png");
 
     topBreadImg.cropFrom(burgerSpriteSheet, 25, 16, 112, 43); // top bun
     burgerImg.cropFrom(burgerSpriteSheet, 30, 134, 103, 48); // patty
