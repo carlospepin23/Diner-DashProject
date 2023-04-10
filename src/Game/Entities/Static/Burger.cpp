@@ -86,6 +86,7 @@ int Burger::getBurgerCost(Burger* burger){
         if(burger->ingredients[i]->name == "cheese") totVal += 3;
         else if(burger->ingredients[i]->name == "lettuce") totVal += 2;
         else if(burger->ingredients[i]->name == "tomato") totVal += 2;
+        else if(burger->ingredients[i]->name == "onion") totVal += 2;
         else if(burger->ingredients[i]->name == "patty") totVal += 4;
     } 
     return totVal;

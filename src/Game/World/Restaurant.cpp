@@ -70,7 +70,7 @@ void Restaurant::initCounters(){
     entityManager->addEntity(new BaseCounter(counterWidth,yOffset-7, counterWidth,108, cheese, cheeseCounterImg));
     entityManager->addEntity(new StoveCounter(counterWidth*2,yOffset, counterWidth, 102, u_burger, burger, stoveCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*3, yOffset, counterWidth, 102, lettuce, lettuceCounterImg));
-    entityManager->addEntity(new BaseCounter(counterWidth*4,yOffset, counterWidth, 102, nullptr, onionCounterImg)); //cambiar nullptr por cebolla
+    entityManager->addEntity(new BaseCounter(counterWidth*4,yOffset, counterWidth, 102, onion, onionCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*5, yOffset -10, counterWidth, 113, tomato, tomatoCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*6, yOffset-32, counterWidth, 133, botBread, breadCounterImg));
     entityManager->addEntity(new BaseCounter(counterWidth*7, yOffset-32, counterWidth, 133, topBread, breadCounterImg));
@@ -112,7 +112,7 @@ void Restaurant::generateClient(){
     b->addIngredient(botBread);
     for(int i = 0; i < ofRandom(1,3); i++)
     {
-        int randNum = ofRandom(1,5);
+        int randNum = ofRandom(1,6);
         if(randNum == 1){
             b->addIngredient(burger);
             b->order[burger->name]++;
@@ -128,6 +128,10 @@ void Restaurant::generateClient(){
         else if(randNum == 4){
             b->addIngredient(lettuce);
             b->order[lettuce->name]++;
+        }
+        else if(randNum == 5){
+            b->addIngredient(onion);
+            b->order[onion->name]++;
         }
     }
     b->addIngredient(topBread);

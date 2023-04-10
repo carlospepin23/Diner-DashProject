@@ -133,7 +133,8 @@ void Player::discardBurger(){ //discards the already served burger, and its quan
       {"tomato",0},
       {"lettuce",0},
       {"cheese",0},
-      {"patty",0}  
+      {"patty",0},
+      {"onion",0}
     };
 }
 

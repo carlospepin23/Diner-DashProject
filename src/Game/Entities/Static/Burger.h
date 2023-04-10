@@ -16,7 +16,8 @@ public:
       {"tomato",0},
       {"lettuce",0},
       {"cheese",0},
-      {"patty",0}  
+      {"patty",0},
+      {"onion",0}
     };
     Burger(int, int, int, int);
     int getBurgerCost(Burger*);
