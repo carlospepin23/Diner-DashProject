@@ -86,6 +86,13 @@ void Player::keyPressed(int key) {
         }
     }
 
+    if(key == 'p'){
+        if(p_UpPatienceUsed==false){
+            getEntityManager()->powUp_Patience();
+            p_UpPatienceUsed=true;
+        }
+    }
+
     if(key == OF_KEY_LEFT){ //el chef se mueve para la izquierda cuando se presiona left arrow
         setFacing("left");
         setPlayerStop(false);

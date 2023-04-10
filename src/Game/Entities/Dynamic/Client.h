@@ -4,7 +4,6 @@
 class Client: public Entity{
     private:
         Burger* burger;
-        int originalPatience;
         int patience=2000;
     public:
         Client(int, int, int, int, ofImage, Burger*);
@@ -15,7 +14,5 @@ class Client: public Entity{
         Client* nextClient=nullptr;
         bool isLeaving=false;
         bool isMad=false;
-
-
-
+        void resetPatience(){this->patience=2000;};
 };

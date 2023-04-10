@@ -17,4 +17,5 @@ public:
 	void removeLeavingClients();
 	std::vector<Entity*> entities;
 	int getClientsMad();
+	void powUp_Patience();
 };

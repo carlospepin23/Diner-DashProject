@@ -13,6 +13,7 @@ class Entity {
 
     virtual void tick();
     virtual void render();
+    virtual void resetPatience();
     bool collides(Entity *entity);
     ofRectangle getBounds();
 

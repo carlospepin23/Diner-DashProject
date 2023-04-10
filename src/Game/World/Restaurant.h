@@ -40,7 +40,7 @@ class Restaurant {
         void tick();
         void render();
         void keyPressed(int key);
-        void keyReleased(int key);
-        EntityManager* getEntityManager();
-        int getMoney();
+        void keyReleased(int key){player->keyReleased(key);}
+        EntityManager* getEntityManager(){return entityManager;}
+        int getMoney(){return this->money;}
 };

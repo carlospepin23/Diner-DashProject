@@ -8,8 +8,7 @@ Entity::Entity(int x, int y, int width, int height, ofImage sprite){
     this->sprite = sprite;
 }
 
-void Entity::tick(){                                                //Cada entidad tiene su tick, pero no esta definido 
-}
+void Entity::tick(){}
 void Entity::render(){
     ofSetColor (255,255,255);
     sprite.draw(x, y, width, height);
@@ -22,3 +21,5 @@ bool Entity::collides(Entity* entity){
 ofRectangle Entity::getBounds(){
     return ofRectangle(x, y, width, height);
 }
+
+void Entity::resetPatience(){}

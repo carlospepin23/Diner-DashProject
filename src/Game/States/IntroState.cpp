@@ -21,6 +21,7 @@ void IntroState::render() {
 	ofDrawBitmapString("-> Press 's' to serve the clients",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 60);
 	ofDrawBitmapString("-> Press 'u' to undo the last ingredient",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 75);
 	ofDrawBitmapString("-> Use '<-' (Left Arrow) or '->' (Right Arrow) to move the player",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 90);
+	ofDrawBitmapString("-> Use 'p' to activate Patience Power Up",(ofGetWidth()/2) - 300 ,(ofGetHeight()/2) + 105);
 	startButton->render();
 }
 

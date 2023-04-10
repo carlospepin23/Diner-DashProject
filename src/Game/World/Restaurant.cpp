@@ -154,18 +154,8 @@ void Restaurant::keyPressed(int key) {
     if(key == 'e'){
         money-=1; //Aplica el costo de los ingredientes al total
     }
+    // if(key == 'p'){
+    //     money-=10; //Aplica el costo de los ingredientes al total
+    // }
 
-}
-
-void Restaurant::keyReleased(int key) {
-    player->keyReleased(key);
-
-}
-
-EntityManager* Restaurant::getEntityManager(){
-    return entityManager;
-}
-
-int Restaurant::getMoney(){
-    return money;
 }

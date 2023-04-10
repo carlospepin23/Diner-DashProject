@@ -67,3 +67,10 @@ void EntityManager::addClient(Client* c){
 int EntityManager::getClientsMad(){
     return clientsMad;
 }
+
+void EntityManager::powUp_Patience(){
+    if(firstClient != nullptr){
+        firstClient->resetPatience();
+    }
+}
+

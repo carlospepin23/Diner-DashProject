@@ -12,6 +12,7 @@ class Player: public Entity{
         Animation *chefAnim;
         Burger *burger;
         EntityManager* entityManager;
+        bool p_UpPatienceUsed=false;
     public:
         Player(int x, int y, int width, int height, ofImage sprite, EntityManager* em);
         void tick();
@@ -24,5 +25,5 @@ class Player: public Entity{
         BaseCounter* getActiveCounter();
         Burger* getBurger();
         void discardBurger();
-        
+        EntityManager* getEntityManager(){return entityManager;}
 };
