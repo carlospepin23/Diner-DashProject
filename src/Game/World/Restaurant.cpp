@@ -16,7 +16,9 @@ Restaurant::Restaurant() {
     doorEntrance=door;
     plant1.load("images/P1_PNG.png"); //planta 1
     plant2.load("images/P2_PNG.png"); //planta 2
-    Table_PNG.load("images/table_PNG.png"); //planta 3
+    plant3.load("images/P3_PNG.png"); //planta 3
+    Table_PNG.load("images/table_PNG.png");
+    welcomeRug.load("images/Welcome.png");
 
     entityManager = new EntityManager();
     ofImage chefPlayerImage;
@@ -142,6 +144,7 @@ void Restaurant::generateClient(){
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
     doorEntrance.draw(250,0,75,100); //dibuja la puerta de entrada
+    welcomeRug.draw(250,105,75,30); //dibuja la alfombra
     Table_PNG.draw(500, 50, 100, 100); //dibuja mesa #1
     plant1.draw(525,30, 50, 50); //dibuja planta de mesa #1
     Table_PNG.draw(500, 150, 100, 100); //dibuja mesa #2

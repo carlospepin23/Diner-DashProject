@@ -30,6 +30,7 @@ class Restaurant {
         Item* topBread;
         ofImage Table_PNG;
         ofImage doorEntrance;
+        ofImage welcomeRug;
         ofImage floor;
         ofImage plant1;
         ofImage plant2;
