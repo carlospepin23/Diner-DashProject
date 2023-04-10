@@ -8,7 +8,11 @@ Player *Restaurant::getPlayer() { return player; }
 void Restaurant::setPlayer(Player *player) { this->player = player; }
 
 Restaurant::Restaurant() {
+    ofImage variousSprites,door;
     floor.load("images/floor.jpg");
+    variousSprites.load("images/sprite.png");
+    door.cropFrom(variousSprites,263,116,32,49);
+    doorEntrance=door;
     //Cargando las imagenes
     plant1.load("images/P1_PNG.png");
     plant2.load("images/P2_PNG.png");
@@ -26,25 +30,27 @@ Restaurant::Restaurant() {
 
 }
 void Restaurant::initItems(){
-    ofImage burgerSpriteSheet, burger_fSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, u_burgerImg, botBreadImg, topBreadImg, plateImg;
+    ofImage burgerSpriteSheet, burger_fSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, u_burgerImg, onionImg, botBreadImg, topBreadImg, plateImg;
     burgerSpriteSheet.load("images/burger.png");
     burger_fSpriteSheet.load("images/burger_f.png");
 
     topBreadImg.cropFrom(burgerSpriteSheet, 25, 16, 112, 43); // top bun
     burgerImg.cropFrom(burgerSpriteSheet, 30, 134, 103, 48); // patty
     u_burgerImg.cropFrom(burger_fSpriteSheet, 30, 134, 103, 48); // uncooked patty
-
+    onionImg.cropFrom(burgerSpriteSheet, 319, 157,104, 40); //onion               
     cheeseImg.cropFrom(burgerSpriteSheet, 169, 213, 102, 39); // cheese
     tomatoImg.cropFrom(burgerSpriteSheet, 169, 158, 110, 41); // tomato
     lettuceImg.cropFrom(burgerSpriteSheet, 161, 62, 117, 34); // lettuce
     botBreadImg.cropFrom(burgerSpriteSheet, 444, 270, 115, 39); // bottom bun
     plateImg.cropFrom(burgerSpriteSheet, 575, 263, 131, 51); // plate
+    
 
     cheese = new Item(cheeseImg, "cheese");
     lettuce = new Item(lettuceImg, "lettuce");
     tomato = new Item(tomatoImg, "tomato");
     burger = new Item(burgerImg, "patty");
     u_burger = new Item(u_burgerImg, "patty");
+    onion = new Item(onionImg,"onion");
     botBread = new Item(botBreadImg, "bottomBun");
     topBread = new Item(topBreadImg, "topBun");
 }
@@ -128,12 +134,13 @@ void Restaurant::generateClient(){
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
-    Table_PNG.draw(500, 50, 100, 100); //Arreglar coordenadas para que sean compatibles con resize
-    plant1.draw(525,30, 50, 50);
-    Table_PNG.draw(500, 150, 100, 100);
-    plant2.draw(525,120, 60, 60);
-    Table_PNG.draw(500, 250, 100, 100);
-    plant3.draw(525,220, 60, 60);
+    doorEntrance.draw(250,0,75,100); //dibuja la puerta de entrada
+    Table_PNG.draw(500, 50, 100, 100); //dibuja mesa #1
+    plant1.draw(525,30, 50, 50); //dibuja planta de mesa #1
+    Table_PNG.draw(500, 150, 100, 100); //dibuja mesa #2
+    plant2.draw(525,120, 60, 60); //dibuja planta de mesa #2
+    Table_PNG.draw(500, 250, 100, 100); //dibuja mesa #3
+    plant3.draw(525,220, 60, 60); //dibuja planta de mesa #3
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);

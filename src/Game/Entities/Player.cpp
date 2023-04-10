@@ -20,17 +20,10 @@ Player::Player(int x, int y, int width, int height, ofImage sprite, EntityManage
 void Player::tick(){
     chefAnim->tick();
     
-    if(facing == "left"  && stop==false){ //FIX Minor bugs respecto al movimiento del chef cuando toca un limite.
+    if(facing == "left"  && stop==false && x >= 0 )
         x-=speed;
-    }else if(facing == "right"  && stop==false){
+    else if(facing == "right"  && stop==false && x + width <= ofGetWidth())
         x+=speed;
-    }
-    //Limites
-    if(x <= 0){
-        facing = "right";
-    }else if(x + width >= ofGetWidth()){
-        facing = "left";
-    }
 }
 
 void Player::render(){
