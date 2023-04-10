@@ -66,7 +66,6 @@ bool Burger::equals(Burger* player_b){
             if(player_b->ingredients[j]->name==this->ingredients[i]->name){
                 c++;
                 itHas_Ingredient=true;
-                break;
             }
         }
 
