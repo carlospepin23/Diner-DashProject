@@ -13,8 +13,6 @@ void WinState::tick() {
 	}
 }
 void WinState::render() {
-	// ofSetBackgroundColor(0,0,0);
-    // ofColor(ofColor::white);
     ofDrawBitmapString("You Won!",(ofGetWidth()/2),(ofGetHeight()/2) + 25);
 	startButton->render();
 }
