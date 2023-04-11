@@ -19,4 +19,6 @@ public:
 	std::vector<Entity*> entities;
 	int getClientsMad();
 	void powUp_Patience();
+	int clientLeftMad;
+	int clientLeftServed;
 };

@@ -96,14 +96,16 @@ void Restaurant::initClients(){
     people.push_back(temp);
 }
 void Restaurant::tick() {
-    if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient))) money = money/2;
     ticks++;
     if(ticks % 400 == 0){
         generateClient();
     }
     player->tick();
     entityManager->tick();
-
+    if(entityManager->firstClient != nullptr)
+    {
+        if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient))) money = money/2;
+    }
 }
 
 
@@ -135,14 +137,17 @@ void Restaurant::generateClient(){
         }
     }
     b->addIngredient(topBread);
-    int generateInspector = ofRandom(0,50);
-    if(generateInspector != 25)
+    int clientLeftCounter = entityManager->clientLeftMad + entityManager->clientLeftServed;
+    if(clientLeftCounter != 10)
     {
         entityManager->addClient(new Client(0, 50, 64, 72, people[ofRandom(8)], b));
     }
     else
     {
         entityManager->addClient(new Inspector(0, 50, 64, 72, people[ofRandom(8)], b));
+        clientLeftCounter = 0;
+        entityManager->clientLeftMad = 0;
+        entityManager->clientLeftServed = 0;  
     }
 }
 void Restaurant::render() {
