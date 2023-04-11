@@ -1,7 +1,7 @@
 #include "ofApp.h"
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofSetWindowTitle("Java Game Box");
+	ofSetWindowTitle("C++ Game Box");
 	//States
 	introState = new IntroState();	
 	menuState = new MenuState();
