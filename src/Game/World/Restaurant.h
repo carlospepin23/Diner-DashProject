@@ -29,6 +29,7 @@ class Restaurant {
         Item* botBread;
         Item* topBread;
         ofImage Table_PNG;
+        ofImage chairs;
         ofImage doorEntrance;
         ofImage welcomeRug;
         ofImage floor;
