@@ -2,7 +2,7 @@
 
 LoseState::LoseState() {
 	string text = "Go to Menu";
-	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*11, 64, 50, text);
+	startButton = new Button(ofGetWidth()/2 - text.length()*8, ofGetHeight()/2 - text.length()*8, 64, 50, text);
 }
 void LoseState::tick() {
 	startButton->tick();
@@ -13,9 +13,7 @@ void LoseState::tick() {
 	}
 }
 void LoseState::render() {
-	// ofSetBackgroundColor(0,0,0);
-    // ofColor(ofColor::white);
-    ofDrawBitmapString("Game Over",(ofGetWidth()/2),(ofGetHeight()/2) + 25);
+    ofDrawBitmapString("Game Over",(ofGetWidth()/2) - 45,(ofGetHeight()/2) + 25);
 	startButton->render();
 }
 

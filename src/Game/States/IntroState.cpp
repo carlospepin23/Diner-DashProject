@@ -3,7 +3,6 @@
 IntroState::IntroState() {
 	string text = "OK, Understood!";
 	startButton = new Button((ofGetWidth()/2)-65, (ofGetHeight()/2)-50, 64, 50, text);
-	//Button(int xPos, int yPos, int width, int height, string buttonText)
 }
 void IntroState::tick() {
 	startButton->tick();

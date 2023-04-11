@@ -3,6 +3,7 @@
 #include "Burger.h"
 #include "EntityManager.h"
 #include "BaseCounter.h"
+#include "StoveCounter.h"
 class Player: public Entity{
 
     private:
