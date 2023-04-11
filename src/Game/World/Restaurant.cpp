@@ -8,12 +8,14 @@ Player *Restaurant::getPlayer() { return player; }
 void Restaurant::setPlayer(Player *player) { this->player = player; }
 
 Restaurant::Restaurant() {
-    ofImage variousSprites,door;
+    ofImage variousSprites,door,chair;
     //Cargando las imagenes
     floor.load("images/floor.jpg");
     variousSprites.load("images/sprite.png");
     door.cropFrom(variousSprites,263,116,32,49); //puerta
     doorEntrance=door;
+    chair.cropFrom(variousSprites,105,16,32,36); //silla
+    chairs=chair;
     plant1.load("images/P1_PNG.png"); //planta 1
     plant2.load("images/P2_PNG.png"); //planta 2
     plant3.load("images/P3_PNG.png"); //planta 3
@@ -106,7 +108,7 @@ void Restaurant::tick() {
     {
         if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient)))
         {
-            if(money < 0) money = 0;
+            if(money < 0) money+=money/2;
             else money = money/2;
         }
     }
@@ -160,10 +162,19 @@ void Restaurant::render() {
     welcomeRug.draw(250,105,75,30); //dibuja la alfombra
     Table_PNG.draw(500, 50, 100, 100); //dibuja mesa #1
     plant1.draw(525,30, 50, 50); //dibuja planta de mesa #1
+    chairs.draw(435,75,50,50); //dibuja silla #1 de mesa #1
+    chairs.draw(605,75,50,50); //dibuja silla #2 de mesa #1
+
     Table_PNG.draw(500, 150, 100, 100); //dibuja mesa #2
     plant2.draw(525,120, 60, 60); //dibuja planta de mesa #2
+    chairs.draw(435,175,50,50); //dibuja silla #1 de mesa #2
+    chairs.draw(605,175,50,50); //dibuja silla #2 de mesa #2
+
     Table_PNG.draw(500, 250, 100, 100); //dibuja mesa #3
     plant3.draw(525,220, 60, 60); //dibuja planta de mesa #3
+    chairs.draw(435,275,50,50); //dibuja silla #1 de mesa #3
+    chairs.draw(605,275,50,50); //dibuja silla #2 de mesa #3
+
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
