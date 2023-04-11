@@ -106,7 +106,11 @@ void Restaurant::tick() {
     entityManager->tick();
     if(entityManager->firstClient != nullptr)
     {
-        if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient))) money = money/2;
+        if((entityManager->firstClient->getPatience() == 1) && (dynamic_cast<Inspector*>(entityManager->firstClient)))
+        {
+            if(money < 0) money+=money/2;
+            else money = money/2;
+        }
     }
 }
 
